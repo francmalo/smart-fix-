@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/style4.css' %}">
+    {% include 'partials/navbar.html' %}
+    <main style="background-color:#F7F1F0">
+        <div class="row">
+            <div class="col-md-3 mt-2">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img/logo4.png' %}" width="250" height="250" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title ">Profile</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"> {{name}}</li>
+                      <li class="list-group-item"><i class="fas fa-phone"></i> {{phone}}</li>
+                      <li class="list-group-item"><i class="fas fa-envelope"></i> {{email}}</li>
+                      
+                    </ul>                    
+                  </div>
+            </div>
+            <div class="col-md-9 mt-2">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="text-center"></h5>                
+                    </div>
+                    <div class="col m-2">
+                        {% comment %} <button type="button" class="btn btn-success" style="width: 100%;">Add job <i class="fas fa-plus"></i></button> {% endcomment %}
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-success" style="width:100%" data-toggle="modal" data-target="#exampleModal">
+                            Add job <i class="fas fa-plus"></i>
+                        </button>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                {% include 'partials/addJob.html' %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <h5 class="text-center">My jobs</h5>
+                    <div class="row">                        
+                        {% for job in jobs %}
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                      <h5 class="card-title">{{job.title}}</h5>                                      
+                                      <p class="card-text">{{job.description}}</p>
+                                      <h6 class="card-subtitle mb-2 text-muted">BUDGET: Ksh {{job.budget | intcomma}}</h6>
+                                      <h6 class="card-subtitle mb-2 text-muted">STATUS:{{job.status}}</h6>
+                                      <a href="#" class="card-link" style="text-decoration: none;">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i> {{job.county}}
+                                      </a>
+                                      <a href="{% url 'more_info_view' job.id %} " class="card-link">More Info</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% include 'partials/footer.html' %}
+{% endblock content %}

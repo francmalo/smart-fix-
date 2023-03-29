@@ -1,0 +1,91 @@
+{% load static %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color:  #F7F1F0;">
+    <div class="container">
+      <a class="navbar-brand" 
+              {% if user.is_superuser %}
+                href="{% url 'admin_dashboard' %}"
+              {% elif user.role == 'technician' %}        
+                href="{% url 'technician_dashboard' %}" 
+              {% elif user.role == 'client' %}   
+                href="{% url 'client_dashboard' %}"  
+              {% else %}
+                href="{% url 'home_view' %}"                
+              {% endif %}
+      
+      >
+        <img src="{% static 'img/logo4.png' %}" class="rounded-circle" width="50" height="50" class="logo" alt="">Smart Fix
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+        <ul class="navbar-nav">
+          <li>         
+            <a class="nav-link" 
+              {% if user.is_superuser %}
+                href="{% url 'admin_dashboard' %}"
+              {% elif user.role == 'technician' %}        
+                href="{% url 'technician_dashboard' %}" 
+              {% elif user.role == 'client' %}   
+                href="{% url 'client_dashboard' %}"  
+              {% else %}
+                href="{% url 'home_view' %}"                
+              {% endif %}
+            >Home</a>
+          </li>
+          <li>         
+            <a class="nav-link" 
+              {% if user.is_superuser %}
+                href="{% url 'get_all_technicians' %}"              
+              {% else %}
+                href="#"                
+              {% endif %}
+            >
+            {% if user.is_superuser %}
+            Technicians
+            
+            {% endif %}
+            </a>
+          </li>
+          <li>
+            <a class="nav-link"
+              {% if user.is_superuser %}
+                href="{% url 'get_all_clients' %}" 
+              {% else %}
+                href="{% url 'login_view' %}"
+              {% endif %}
+            >
+              {% if user.is_superuser %}
+                Clients
+              {% else %}
+                {% if user.is_authenticated %}
+                {% else %}
+                Login/Register
+                {% endif %}
+              {% endif %}
+            </a>
+          </li>
+          
+        </ul>
+
+        <ul class="navbar-nav ml-auto">          
+            
+            
+         
+            
+            <li>
+            {% if user.is_authenticated %}
+            <a class="nav-link" href="{% url 'logout_view' %}">
+                <i class="fas fa-sign-out-alt"></i>
+                logout</a>         
+            
+            {% endif %}         
+            
+              
+            </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>

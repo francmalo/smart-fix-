@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/style4.css' %}">
+    {% include 'partials/navbar.html' %}
+  <main style="background-color:#F7F1F0">
+        <div class="container">
+            <div class="row">
+                <div class="col mt-2">
+                    <div class="card bg-success">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Technicians: {{total_technicians}}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mt-2">
+                    <div class="card bg-warning">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Clients: {{total_clients}}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mt-2">
+                    <div class="card bg-secondary">
+                        <div class="card-body">
+                            <h5 class="card-title">Today's bids: {{total_bids}}</h5>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <div class="mt-2">
+            <h3 class="text-center">Latest members</h3>
+            <div class="mt-1">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">FullName</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone Number</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Date joined</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for member in members %}
+                            <tr>
+                                <td>{{member.fullName}}</td>
+                                <td>{{member.email}}</td>
+                                <td>{{member.phoneNumber}}</td>
+                                <td>{{member.role}}</td>
+                                <td>{{member.date_joined}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    {% include 'partials/footer.html' %}
+{% endblock content %}

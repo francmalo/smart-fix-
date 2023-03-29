@@ -1,0 +1,42 @@
+<div class="modal-content">
+    <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Add Job</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+        <form method="POST" action="{% url 'addjob' %}">
+            {% csrf_token %}
+            <div class="form-group mt-2">
+                <label for="formGroupExampleInput">Job Title</label>
+                <input type="text" class="form-control" name="title" id="formGroupExampleInput" placeholder="Job Title">
+            </div>
+            <div class="form-group mt-2">
+                <label for="exampleFormControlTextarea1">Description</label>
+                <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-group mt-2">
+                <label for="formGroupExampleInput">Budget (Ksh)</label>
+                <input type="number" class="form-control" name="budget" id="formGroupExampleInput" placeholder="Budget" min="1">
+            </div>
+            <div class="form-group mt-2">
+                <label for="exampleFormControlSelect1">County</label>
+                <select name="county" class="form-select" id="exampleFormControlSelect1">
+                    {% for county in counties %}
+                        <option>{{county.name}}</option>                  
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group mt-2">
+                <label for="formGroupExampleInput">Town</label>
+                <input type="text" name="town" class="form-control" id="formGroupExampleInput" placeholder="Town">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Save changes</button>
+            </div>
+        </form>
+    </div>
+    
+</div>

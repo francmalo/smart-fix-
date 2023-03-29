@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    {% include 'partials/navbar.html' %}
+    
+         <div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="{% static 'img/logo4.png' %}" />
+            <div class="text-center">
+                <h1 >login</h1>
+            </div>
+            <form class="form-signin" method="POST">
+                {% csrf_token %}
+                <span id="reauth-email" class="reauth-email"></span>
+                <div class="form-group">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+                </div>
+                
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            </form><!-- /form -->
+            <a href="{% url 'registration_view' %}" class="forgot-password">
+                Don't have an account? Register
+            </a>
+        </div><!-- /card-container -->
+    </div><!-- /container -
+{% endblock content %}
+<>

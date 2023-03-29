@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/style4.css' %}">
+    {% include 'partials/navbar.html' %}
+    <main style="background-color:#F7F1F0">
+        <h3 class="mt-2">All Clients</h3>
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Date Joined</th>
+                </thead>
+                <tbody>
+                    {% for client in clients %}
+                        <tr>
+                            <td>{{client.fullName}}</td>
+                            <td>{{client.email}}</td>
+                            <td>{{client.phoneNumber}}</td>
+                            <td>{{client.date_joined}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+    {% include 'partials/footer.html' %}
+{% endblock content %}

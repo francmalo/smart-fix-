@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style3.css' %}">
+ {% include 'partials/navbar.html' %}
+    <main style="background-color:#F7F1F0">
+        <div class="text-center">
+            <h3>WELCOME TO SMARTFIX KENYA</h3>
+            <p>we provide smart solutions to all your problems</p>
+        </div>
+    
+        <main>
+            <section id="slider">
+                <div class="slide">
+                    
+                    <img src="{% static 'img2/carousel-3.jpg' %}" alt="Slide 1" style="width:100%">
+                    <div class="slide-caption">
+                        <h2>Welcome to Smartfix kenya</h2>
+                        <p>Connecting you with skilled proffesionals for all your  design,construction,maintenance, and renovation needs</p>
+                      </div>
+                </div>
+               
+            </section>
+        </main>
+
+
+
+        <h2 class="text-center mt-2">Our services</h2>]
+        
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img2/service-6.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Interior Design </h5>
+            
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img2/service-5.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Tiling and Painting</h5>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img2/service-3.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Renovation </h5>
+                     
+                      
+                    </div>
+                </div>
+            </div> <div class="col">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img2/service-4.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Wiring and Installation</h5>
+            
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img2/service-2.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Home Maintenance</h5>
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img2/service-1.jpg' %}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Building Construction</h5>
+                     
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% include 'partials/footer.html' %}
+{% endblock content %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/style4.css' %}">
+    {% include 'partials/navbar.html' %}
+ <main style="background-color:#F7F1F0">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card mt-2">
+                    <div class="card-body">
+                      <h5 class="card-title">{{job.title}}</h5>                                      
+                      <p class="card-text">{{job.description}}</p>
+                      <h6 class="card-subtitle mb-2 text-muted">BUDGET: Ksh {{job.budget | intcomma}}</h6>
+                      <h6 class="card-subtitle mb-2 text-muted">DATE CREATED: {{job.date_created}}</h6>
+                      {% if job.status == 'completed' %}
+                      <a href="#" style="text-decoration:none" class="card-link text-danger">Job Completed</a>
+                      {% else %}
+                        <a href="{% url 'close_job' job.id %} " class="card-link">Close Job</a>
+                      {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <h5 class="mt-2">Total bids: {{total_bids}}</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Phone Number</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Amount</th>
+                            {% if job.status == "completed" %}
+                                <th scope="col">Status</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for bid in bids %}
+                            <tr>
+                                <td>{{bid.technician.fullName}}</td>
+                                <td>{{bid.technician.phoneNumber}}</td>
+                                <td>{{bid.technician.email}}</td>
+                                <td>Ksh {{bid.amount | intcomma}}</td>
+                                <td>
+                                    {% if job.status  == "completed"%}
+                                        <button type="button" class="btn btn-secondary" disabled>Completed</button>
+                                    {% else %}
+                                        <button type="button" onclick="location.href='{% url 'assign_job' bid.technician.id bid.job.id %}'" class="btn btn-success">Assign job</button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
