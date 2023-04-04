@@ -1,4 +1,4 @@
-# fundi-mtaa
+# smart fix
 
 A Django based application that allows clients and technicians to connect by posting and biding for jobs.
 
